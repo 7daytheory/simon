@@ -66,12 +66,13 @@ function checkSequence(currentLevel) {
 
     if(gamePattern[currentLevel] === userPattern[currentLevel]) {
         console.log("correct - next level!");
-        nextSequence();
+        setTimeout(function() {
+            nextSequence()}, 1000);
     } else {
         console.log("Game over!");
         alert("Wrong!");
     }
 
-    userPattern = [];
+    userPattern.pop();
 }
 
