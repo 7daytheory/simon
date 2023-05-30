@@ -8,6 +8,9 @@ $(".simonBtn").on("click", function() {
     let clickedColor = $(this).attr("id");
 
     userPattern.push(clickedColor);
+    
+    let audio = new Audio("sounds/" + clickedColor + ".mp3");
+    audio.play();
     console.log(userPattern);
 })
 
