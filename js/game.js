@@ -26,11 +26,14 @@ $(".simonBtn").on("click", function() {
     //Play audio
     let audio = new Audio("sounds/" + clickedColor + ".mp3");
     audio.play();
+
+    let lastAnswer = userPattern.length - 1;
+
+    checkSequence(lastAnswer);
 })
 
 //Add items to sequence
 function nextSequence() {
-
 //get random color and add it to game pattern array
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = buttonColors[randomNum];
@@ -58,4 +61,17 @@ function animatePress(currentColor) {
     }, 100);
 }
 
+function checkSequence(currentLevel) {
+    let success = true;
+
+    if(gamePattern[currentLevel] === userPattern[currentLevel]) {
+        console.log("correct - next level!");
+        nextSequence();
+    } else {
+        console.log("Game over!");
+        alert("Wrong!");
+    }
+
+    userPattern = [];
+}
 
