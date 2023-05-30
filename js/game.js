@@ -1,6 +1,5 @@
 const buttonColors = ["red", "blue", "green", "yellow"];
 
-const userPattern = [];
 const gamePattern = [];
 
 let level = 0;
@@ -15,6 +14,7 @@ $('body').keyup(function(e){
 
 //Store user click data
 $(".simonBtn").on("click", function() {
+    const userPattern = [];
 
     //Add color to user pattern array
     let clickedColor = $(this).attr("id");
@@ -64,15 +64,19 @@ function animatePress(currentColor) {
 function checkSequence(currentLevel) {
     let success = true;
 
+    
+
     if(gamePattern[currentLevel] === userPattern[currentLevel]) {
         console.log("correct - next level!");
+
+        if (userClickedPattern.length === gamePattern.length){ {
         setTimeout(function() {
             nextSequence()}, 1000);
-    } else {
-        console.log("Game over!");
-        alert("Wrong!");
+        }
+        } else {
+            console.log("Game over!");
+            alert("Wrong!");
+        }
     }
-
-    userPattern.pop();
 }
 
