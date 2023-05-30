@@ -1,16 +1,18 @@
 const buttonColors = ["red", "blue", "green", "yellow"];
 const gamePattern = [];
 
-let randomColor;
-
 function nextSequence() {
-  return Math.floor(Math.random() * 4);
+  let randomNum = Math.floor(Math.random() * 4);
+  let randomColor = buttonColors[randomNum];
+  gamePattern.push(randomColor);
+
+  $("#" + randomColor).fadeIn(100).fadeOut(100).fadeIn(100);
+
+  console.log(randomColor);
 }
 
-let randomNum = nextSequence();
+nextSequence();
 
-randomColor = buttonColors[randomNum];
-gamePattern.push(randomColor);
 
-console.log(gamePattern);
+
 
