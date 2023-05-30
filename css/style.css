@@ -1,3 +1,47 @@
 body {
+    text-align: center;
+     background-color: #5b0006;
+}
+
+#title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    margin:  5%;
+    color: #FEF2BF;
+  }
+
+.wrapper {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.simonBtn {
+    margin: 25px;
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border: 10px solid #000;
+    border-radius: 20%;
+}
+
+.red {
     background: red;
+}
+
+.blue {
+    background: blue;
+}
+
+.yellow {
+    background: yellow;
+}
+
+.green {
+    background: green;
+}
+
+.pressed { 
+  box-shadow: 0 0 20px white;
+  background-color: grey;
 }
