@@ -14,7 +14,6 @@ $('body').keyup(function(e){
 
 //Store user click data
 $(".simonBtn").on("click", function() {
-    userPattern = [];
 
     //Add color to user pattern array
     let clickedColor = $(this).attr("id");
@@ -32,9 +31,10 @@ $(".simonBtn").on("click", function() {
 
 //Add items to sequence
 function nextSequence() {
+    userPattern = [];
 //Add level
   level++;
-  
+
 //get random color and add it to game pattern array
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = buttonColors[randomNum];
@@ -54,16 +54,17 @@ function nextSequence() {
 function checkSequence(currentLevel) {
     let success = true;
 
+    console.log(gamePattern[currentLevel] + " | " + userPattern[currentLevel]);
+    console.log(gamePattern);
+    console.log(userPattern);
+
     if(gamePattern[currentLevel] === userPattern[currentLevel]) {
         console.log("correct - next level!");
 
-        if (userClickedPattern.length === gamePattern.length){ {
+        if (userPattern.length === gamePattern.length){ {
         setTimeout(function() {
             nextSequence()}, 1000);
-        }
-        } else {
-            console.log("Game over!");
-            alert("Wrong!");
+            }
         }
     }
 }
@@ -82,3 +83,6 @@ function animatePress(currentColor) {
     }, 100);
 }
 
+function gameOver() {
+
+}
