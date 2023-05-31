@@ -1,6 +1,6 @@
 const buttonColors = ["red", "blue", "green", "yellow"];
 
-const gamePattern = [];
+var gamePattern = [];
 
 let level = 0;
 
@@ -14,7 +14,7 @@ $('body').keyup(function(e){
 
 //Store user click data
 $(".simonBtn").on("click", function() {
-    const userPattern = [];
+    userPattern = [];
 
     //Add color to user pattern array
     let clickedColor = $(this).attr("id");
@@ -24,16 +24,17 @@ $(".simonBtn").on("click", function() {
     animatePress(clickedColor);
     
     //Play audio
-    let audio = new Audio("sounds/" + clickedColor + ".mp3");
-    audio.play();
+    playSound(clickedColor);
 
     let lastAnswer = userPattern.length - 1;
-
     checkSequence(lastAnswer);
 })
 
 //Add items to sequence
 function nextSequence() {
+//Add level
+  level++;
+  
 //get random color and add it to game pattern array
   let randomNum = Math.floor(Math.random() * 4);
   let randomColor = buttonColors[randomNum];
@@ -46,25 +47,12 @@ function nextSequence() {
   let audio = new Audio("sounds/" + randomColor + ".mp3");
   audio.play();
 
-  //Add level
-  level++;
-
   //Update title to show what level the user is on
   $("#title").text("Level " + level);
 }
 
-function animatePress(currentColor) {
-    $("#" + currentColor).addClass("pressed");
-
-    setTimeout(function () {
-        $("#" + currentColor).removeClass("pressed");
-    }, 100);
-}
-
 function checkSequence(currentLevel) {
     let success = true;
-
-    
 
     if(gamePattern[currentLevel] === userPattern[currentLevel]) {
         console.log("correct - next level!");
@@ -78,5 +66,19 @@ function checkSequence(currentLevel) {
             alert("Wrong!");
         }
     }
+}
+
+function playSound(sound) {
+    //play audio
+    let audio = new Audio("sounds/" + sound + ".mp3");
+    audio.play();
+}
+
+function animatePress(currentColor) {
+    $("#" + currentColor).addClass("pressed");
+
+    setTimeout(function () {
+        $("#" + currentColor).removeClass("pressed");
+    }, 100);
 }
 
