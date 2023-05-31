@@ -52,20 +52,15 @@ function nextSequence() {
 }
 
 function checkSequence(currentLevel) {
-    let success = true;
-
-    console.log(gamePattern[currentLevel] + " | " + userPattern[currentLevel]);
-    console.log(gamePattern);
-    console.log(userPattern);
-
     if(gamePattern[currentLevel] === userPattern[currentLevel]) {
-        console.log("correct - next level!");
 
         if (userPattern.length === gamePattern.length){ {
         setTimeout(function() {
             nextSequence()}, 1000);
             }
         }
+    } else {
+        gameOver();
     }
 }
 
@@ -84,5 +79,16 @@ function animatePress(currentColor) {
 }
 
 function gameOver() {
+
+    $("#title").text("Game Over! Press S to play again.");
+    userPattern = [];
+    gamePattern = [];
+    level = 0;
+
+    $("body").addClass("wrong");
+
+    setTimeout(function () {
+        $("body").removeClass("wrong");
+    }, 250);
 
 }
